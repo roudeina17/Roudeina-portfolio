@@ -38,7 +38,7 @@ paddingBottom: '5rem',
             boxShadow: '0 8px 40px rgba(91,74,107,0.2)',
           }}>
             <img
-              src="/photo.jpeg"
+              src="./photo.jpeg"
               alt="Roudeina Ben Trad"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
               onError={(e) => {
