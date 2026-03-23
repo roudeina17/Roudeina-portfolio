@@ -1,41 +1,43 @@
 import { motion } from 'framer-motion'
 
 function Hero() {
+  const isMobile = window.innerWidth < 768
+
   return (
     <section id="hero" style={{
-     minHeight: 'auto',
-paddingTop: '15rem',
-paddingBottom: '5rem',
+      minHeight: 'auto',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      padding: '0 2.5rem',
+      padding: isMobile ? '6rem 1.5rem 3rem' : '8rem 2.5rem 4rem',
       backgroundColor: '#FAF8F5',
     }}>
       <div style={{
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: isMobile ? 'column' : 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        gap: '5rem',
+        gap: isMobile ? '2rem' : '5rem',
         maxWidth: '1100px',
         width: '100%',
+        textAlign: isMobile ? 'center' : 'left',
       }}>
 
         {/* Photo */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, x: isMobile ? 0 : -40, y: isMobile ? -20 : 0 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
           style={{ flexShrink: 0 }}
         >
           <div style={{
-            width: '260px',
-            height: '260px',
+            width: isMobile ? '180px' : '260px',
+            height: isMobile ? '180px' : '260px',
             borderRadius: '50%',
             overflow: 'hidden',
             border: '4px solid #8B6F8B',
             boxShadow: '0 8px 40px rgba(91,74,107,0.2)',
+            margin: isMobile ? '0 auto' : '0',
           }}>
             <img
               src={import.meta.env.BASE_URL + 'photo.jpeg'}
@@ -55,10 +57,10 @@ paddingBottom: '5rem',
 
         {/* Text */}
         <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, x: isMobile ? 0 : 40, y: isMobile ? 20 : 0 }}
+          animate={{ opacity: 1, x: 0, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-          style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}
+          style={{ display: 'flex', flexDirection: 'column', gap: '1rem', alignItems: isMobile ? 'center' : 'flex-start' }}
         >
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -66,10 +68,10 @@ paddingBottom: '5rem',
             transition={{ delay: 0.4, duration: 0.6 }}
             style={{
               fontFamily: 'Cormorant Garamond, serif',
-              fontSize: '1rem',
+              fontSize: '0.85rem',
               fontWeight: 500,
               color: '#8B6F8B',
-              letterSpacing: '0.15em',
+              letterSpacing: '0.12em',
               textTransform: 'uppercase',
               margin: 0,
             }}
@@ -83,7 +85,7 @@ paddingBottom: '5rem',
             transition={{ delay: 0.5, duration: 0.6 }}
             style={{
               fontFamily: 'Cormorant Garamond, serif',
-              fontSize: '3.2rem',
+              fontSize: isMobile ? '2.8rem' : '4rem',
               fontWeight: 700,
               color: '#3D2B4F',
               lineHeight: 1.1,
@@ -107,21 +109,21 @@ paddingBottom: '5rem',
             transition={{ delay: 0.8, duration: 0.6 }}
             style={{
               fontFamily: 'Cormorant Garamond, serif',
-              fontSize: '1.2rem',
+              fontSize: '1.1rem',
               color: '#5C4A6B',
               lineHeight: 1.7,
               maxWidth: '480px',
               margin: 0,
             }}
           >
-          De la chimie industrielle à la proprieté intellectuelle — un parcours entre INSAT et ENSIT.           </motion.p>
+            De la chimie industrielle a la propriete intellectuelle — un parcours entre INSAT et ENSIT.
+          </motion.p>
 
-          {/* Badges ecoles */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.9, duration: 0.6 }}
-            style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}
+            style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', justifyContent: isMobile ? 'center' : 'flex-start' }}
           >
             <span style={{
               padding: '0.35rem 1rem',
@@ -130,9 +132,8 @@ paddingBottom: '5rem',
               fontFamily: 'Cormorant Garamond, serif',
               fontSize: '0.95rem',
               color: '#5C4A6B',
-              letterSpacing: '0.05em',
             }}>
-              Ingenieur INSAT
+              Ingenieure INSAT
             </span>
             <span style={{
               padding: '0.35rem 1rem',
@@ -141,7 +142,6 @@ paddingBottom: '5rem',
               fontFamily: 'Cormorant Garamond, serif',
               fontSize: '0.95rem',
               color: '#5C4A6B',
-              letterSpacing: '0.05em',
             }}>
               Master MTIPI — ENSIT
             </span>
@@ -151,7 +151,7 @@ paddingBottom: '5rem',
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1, duration: 0.6 }}
-            style={{ display: 'flex', gap: '1rem', marginTop: '0.5rem' }}
+            style={{ display: 'flex', gap: '1rem', marginTop: '0.5rem', flexWrap: 'wrap', justifyContent: isMobile ? 'center' : 'flex-start' }}
           >
             <a
               href="#presentations"
@@ -170,7 +170,7 @@ paddingBottom: '5rem',
               onMouseEnter={(e) => { e.target.style.backgroundColor = '#8B6F8B' }}
               onMouseLeave={(e) => { e.target.style.backgroundColor = '#5C4A6B' }}
             >
-              Voir mes recherches
+              Voir mes travaux
             </a>
             <a
               href="https://www.linkedin.com/in/roudeina-ben-trad/"
