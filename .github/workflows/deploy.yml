@@ -23,6 +23,8 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          VITE_BASE_URL: /Roudeina-portfolio/
 
       - name: Build Docker image
         run: docker build -t roudeina-portfolio .
